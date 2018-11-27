@@ -12,6 +12,8 @@
 		2B6D01F621ADA1790006C898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F421ADA1790006C898 /* Main.storyboard */; };
 		2B6D01F821ADA17D0006C898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F721ADA17D0006C898 /* Assets.xcassets */; };
 		2B6D01FB21ADA17D0006C898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F921ADA17D0006C898 /* LaunchScreen.storyboard */; };
+		2B6D020421ADAC160006C898 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D020321ADAC160006C898 /* Machine.swift */; };
+		2B6D020821ADC2BD0006C898 /* MachinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D020721ADC2BD0006C898 /* MachinePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2B6D01F721ADA17D0006C898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B6D01FA21ADA17D0006C898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B6D01FC21ADA17D0006C898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B6D020321ADAC160006C898 /* Machine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Machine.swift; sourceTree = "<group>"; };
+		2B6D020721ADC2BD0006C898 /* MachinePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		2B6D01EF21ADA1790006C898 /* MobileNOCAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				2B6D020221ADABFD0006C898 /* Models */,
 				2B6D01F021ADA1790006C898 /* AppDelegate.swift */,
 				2B6D01F221ADA1790006C898 /* ViewController.swift */,
 				2B6D01F421ADA1790006C898 /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				2B6D01FC21ADA17D0006C898 /* Info.plist */,
 			);
 			path = MobileNOCAssessment;
+			sourceTree = "<group>";
+		};
+		2B6D020221ADABFD0006C898 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D020321ADAC160006C898 /* Machine.swift */,
+				2B6D020721ADC2BD0006C898 /* MachinePage.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,8 @@
 			files = (
 				2B6D01F321ADA1790006C898 /* ViewController.swift in Sources */,
 				2B6D01F121ADA1790006C898 /* AppDelegate.swift in Sources */,
+				2B6D020821ADC2BD0006C898 /* MachinePage.swift in Sources */,
+				2B6D020421ADAC160006C898 /* Machine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
