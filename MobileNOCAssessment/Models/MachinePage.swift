@@ -8,12 +8,17 @@
 
 import Foundation
 
-class MachineData: Decodable {
+struct MachinePage: Decodable {
     
-    private(set) var content: [Machine]?
-    private(set) var totalPages: Int?
-    private(set) var totalElements: Int?
-    private(set) var size: Int?
-    private(set) var number: Int?
+    private(set) var machines: [Machine]?
+    private(set) var totalElements: Int
+    private(set) var totalPages: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case machines = "content"
+        case totalElements
+        case totalPages
+    }
     
 }
+
