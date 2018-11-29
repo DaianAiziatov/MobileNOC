@@ -20,6 +20,10 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     let client = APIClient()
     let request = APIRequest(username: "admin@boot.com", password: "admin")
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var totalCount: Int {
         return total
     }
@@ -35,7 +39,6 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //tableView.delegate = self
         tableView.dataSource = self
         tableView.prefetchDataSource = self
         
@@ -64,15 +67,10 @@ class MachineListViewController: UIViewController, AlertDisplayer {
             case .success(let response):
                 DispatchQueue.main.async {
                     print(response)
-                    // 1
                     self.currentPage += 1
                     self.isFetchInProgress = false
-                    // 2
                     self.total = response.totalElements
-                    print(response.machines)
                     self.machines.append(contentsOf: response.machines)
-                    //self.tableView.reloadData()
-                    // 3
                     if response.page > 1 {
                         let indexPathsToReload = self.calculateIndexPathsToReload(from: response.machines)
                         self.onFetchCompleted(with: indexPathsToReload)
@@ -155,20 +153,4 @@ private extension MachineListViewController {
 }
 
 
-extension MachineListViewController: URLSessionDelegate {
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        // Pass test server with self signed certificate
-        print("from session delegate")
-        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-        }
-        if challenge.protectionSpace.host == "45.55.43.15:9090" {
-            completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-        } else {
-            completionHandler(.performDefaultHandling, nil)
-        }
-    }
-    
-}
 
