@@ -24,6 +24,9 @@
 		2B8DDC5921AF22D100171267 /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5821AF22D100171267 /* AlertDisplayer.swift */; };
 		2BFA21B921AF9D8900B7C56B /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21B821AF9D8900B7C56B /* TableViewHeader.swift */; };
 		2BFA21BB21AF9DEA00B7C56B /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BFA21BA21AF9DEA00B7C56B /* TableViewHeader.xib */; };
+		2BFA21BF21B04BBA00B7C56B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21BE21B04BBA00B7C56B /* UIView.swift */; };
+		2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */; };
+		2BFA21C321B04FA900B7C56B /* MachineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		2B8DDC5821AF22D100171267 /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
 		2BFA21B821AF9D8900B7C56B /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		2BFA21BA21AF9DEA00B7C56B /* TableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		2BFA21BE21B04BBA00B7C56B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineTableViewCell.swift; sourceTree = "<group>"; };
+		2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachineTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 		2B6D01EF21ADA1790006C898 /* MobileNOCAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				2BFA21BD21B04B9F00B7C56B /* Extensions */,
 				2BFA21B721AF8C9200B7C56B /* Views */,
 				2BFA21B621AF8C7300B7C56B /* Controllers */,
 				2B6D020921ADE5A10006C898 /* Networking */,
@@ -136,8 +143,18 @@
 			children = (
 				2BFA21B821AF9D8900B7C56B /* TableViewHeader.swift */,
 				2BFA21BA21AF9DEA00B7C56B /* TableViewHeader.xib */,
+				2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */,
+				2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */,
 			);
 			path = Customs;
+			sourceTree = "<group>";
+		};
+		2BFA21BD21B04B9F00B7C56B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2BFA21BE21B04BBA00B7C56B /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +219,7 @@
 				2B6D01FB21ADA17D0006C898 /* LaunchScreen.storyboard in Resources */,
 				2B6D01F821ADA17D0006C898 /* Assets.xcassets in Resources */,
 				2B6D01F621ADA1790006C898 /* Main.storyboard in Resources */,
+				2BFA21C321B04FA900B7C56B /* MachineTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +232,7 @@
 			files = (
 				2B8DDC5921AF22D100171267 /* AlertDisplayer.swift in Sources */,
 				2B6D021321ADEBD30006C898 /* Result.swift in Sources */,
+				2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */,
 				2B6D01F321ADA1790006C898 /* LoginViewController.swift in Sources */,
 				2B6D021521ADEC4A0006C898 /* HTTPURLResponse.swift in Sources */,
 				2BFA21B921AF9D8900B7C56B /* TableViewHeader.swift in Sources */,
@@ -222,6 +241,7 @@
 				2B6D020821ADC2BD0006C898 /* MachinePage.swift in Sources */,
 				2B6D020B21ADE5BA0006C898 /* APIClient.swift in Sources */,
 				2B6D021121ADEB6C0006C898 /* DataResponseError.swift in Sources */,
+				2BFA21BF21B04BBA00B7C56B /* UIView.swift in Sources */,
 				2B6D020D21ADE6E10006C898 /* APIRequest.swift in Sources */,
 				2B8DDC5721AF1AFD00171267 /* MachineListViewController.swift in Sources */,
 				2B6D020421ADAC160006C898 /* Machine.swift in Sources */,

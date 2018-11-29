@@ -12,6 +12,28 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Left bar outlets
+    @IBOutlet weak var avatarButton: UIButton! {
+        didSet {
+            avatarButton.makeCircleBorders()
+        }
+    }
+    @IBOutlet weak var logoImageView: UIImageView! {
+        didSet {
+            logoImageView.makeRoundBorder(with: 20.0)
+        }
+    }
+    
+    @IBOutlet var fileterButtonsCollection: [UIButton]! {
+        didSet {
+            fileterButtonsCollection.enumerated().forEach({
+                fileterButtonsCollection[$0.offset].makeCircleBorders()
+                fileterButtonsCollection[$0.offset].makeBordersWith(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), width: 1.0)
+            })
+        }
+    }
+    
+    
     private var machines: [Machine] = []
     private var currentPage = 0
     private var total = 0
@@ -38,6 +60,9 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
+        //tableView.register(UINib(nibName: "TableViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableViewHeader")
 
         tableView.dataSource = self
         tableView.prefetchDataSource = self
@@ -97,19 +122,22 @@ extension MachineListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "machineCell", for: indexPath)
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell") as! MachineTableViewCell
         // 2
         if isLoadingCell(for: indexPath) {
             
         } else {
-            cell.textLabel?.text = machines[indexPath.row].name
-            cell.detailTextLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
+            cell.serverNameLabel?.text = machines[indexPath.row].name
+            cell.serialNumberLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
+            cell.ipAddressLabel?.text = machines[indexPath.row].ipAddress ?? "unknown"
+            cell.ipSubnetMaskLabel?.text = machines[indexPath.row].ipSubnetMask ?? "unknown"
+            cell.status = machines[indexPath.row].statusId
         }
         return cell
     }
+    
 }
+
 
 extension MachineListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
