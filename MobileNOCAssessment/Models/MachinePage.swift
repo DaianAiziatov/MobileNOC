@@ -10,14 +10,14 @@ import Foundation
 
 struct MachinePage: Decodable {
     
-    private(set) var machines: [Machine]?
+    private(set) var machines: [Machine]
     private(set) var totalElements: Int
-    private(set) var totalPages: Int
+    private(set) var page: Int
     
     enum CodingKeys: String, CodingKey {
         case machines = "content"
         case totalElements
-        case totalPages
+        case page = "number"
     }
     
 }
