@@ -24,6 +24,7 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         }
     }
     
+    // MARK: Top bar outlets
     @IBOutlet var fileterButtonsCollection: [UIButton]! {
         didSet {
             fileterButtonsCollection.enumerated().forEach({
@@ -33,10 +34,21 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         }
     }
     
+    @IBOutlet weak var countLabel: UILabel! {
+        didSet {
+            countLabel.makeRoundBorder(with: 20.0)
+        }
+    }
+    
+    
     
     private var machines: [Machine] = []
     private var currentPage = 0
-    private var total = 0
+    private var total = 0 {
+        didSet {
+            countLabel.text = "\(total)"
+        }
+    }
     private var isFetchInProgress = false
     
     let client = APIClient()
@@ -62,7 +74,7 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
-        //tableView.register(UINib(nibName: "TableViewHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableViewHeader")
+        //tableView.register(UINib(nibName: "TableViewHeader", bundle: nil), forCellReuseIdentifier: "TableViewHeader")
 
         tableView.dataSource = self
         tableView.prefetchDataSource = self
@@ -136,6 +148,18 @@ extension MachineListViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension MachineListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: TableViewHeader = .fromNib()
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
+    }
 }
 
 

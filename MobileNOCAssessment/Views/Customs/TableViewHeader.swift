@@ -2,20 +2,20 @@
 //  TableViewHeader.swift
 //  MobileNOCAssessment
 //
-//  Created by Daian Aiziatov on 28/11/2018.
+//  Created by Daian Aiziatov on 29/11/2018.
 //  Copyright © 2018 Daian Aiziatov. All rights reserved.
 //
 
 import UIKit
 
-class TableViewHeader: UITableViewHeaderFooterView {
+class TableViewHeader: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    @IBOutlet weak var contentView: UIView!
+    
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)
+//        self.addSubview(self.contentView);    // adding the top level view to the view hierarchy
+//    }
 
 }
