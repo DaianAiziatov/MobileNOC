@@ -66,13 +66,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HBy-dj-6l9">
                                                         <rect key="frame" x="101" y="23.5" width="340" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0an-pM-DeS">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0an-pM-DeS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="60" id="HaL-QQ-eUY"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="HaL-QQ-eUY"/>
                                                                 </constraints>
-                                                                <state key="normal" title="All">
+                                                                <state key="normal" title="All  ">
                                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -83,7 +83,7 @@
                                                                 <rect key="frame" x="70" y="0.0" width="70" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="70" id="s0w-P7-PdG"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="s0w-P7-PdG"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Active">
                                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,7 +96,7 @@
                                                                 <rect key="frame" x="150" y="0.0" width="70" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="70" id="prK-2X-oij"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="prK-2X-oij"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Down">
                                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,7 +109,7 @@
                                                                 <rect key="frame" x="230" y="0.0" width="110" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="dcm-dx-1Lx"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="dcm-dx-1Lx"/>
                                                                 </constraints>
                                                                 <state key="normal" title="All Locations">
                                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,6 +121,7 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="JYt-HX-2eD"/>
+                                                            <constraint firstAttribute="width" constant="340" id="xzp-xP-bea"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
