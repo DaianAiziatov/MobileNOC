@@ -74,23 +74,35 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="check"/>
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="jec-03-3ZP" eventType="touchUpInside" id="dGA-RO-YM6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icv-9t-mWy">
                                         <rect key="frame" x="50" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" image="phone"/>
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="jec-03-3ZP" eventType="touchUpInside" id="y69-RP-afF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SV-nP-w88">
                                         <rect key="frame" x="100" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="clock"/>
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="jec-03-3ZP" eventType="touchUpInside" id="jmO-8D-R0O"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuT-3h-LUZ">
                                         <rect key="frame" x="150" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="mute"/>
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="jec-03-3ZP" eventType="touchUpInside" id="tNN-kh-jPf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -164,15 +176,19 @@
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
+                <outlet property="callButton" destination="icv-9t-mWy" id="TIw-cO-p1h"/>
+                <outlet property="checkButton" destination="yTb-IF-9Wo" id="eIp-oL-IBG"/>
                 <outlet property="containerView" destination="c0b-Xa-L9g" id="bcD-pY-QR6"/>
                 <outlet property="indicatorView" destination="ZHn-Zv-bih" id="cms-Pd-xzO"/>
                 <outlet property="insideStatusView" destination="K1O-TD-6ze" id="5kK-cK-jmK"/>
                 <outlet property="ipAddressLabel" destination="Rut-SF-0mS" id="OMN-bi-v1V"/>
                 <outlet property="ipSubnetMaskLabel" destination="jwy-fT-h1s" id="D8U-N5-siG"/>
+                <outlet property="muteButton" destination="JuT-3h-LUZ" id="jjc-9q-Fs8"/>
                 <outlet property="serialNumberLabel" destination="bXl-fz-uyQ" id="9Pn-dW-t6t"/>
                 <outlet property="serverImageView" destination="VJb-JI-Aku" id="mMb-QF-Dua"/>
                 <outlet property="serverNameLabel" destination="hvl-i7-WbG" id="Alr-e6-tzx"/>
                 <outlet property="statusView" destination="Dpl-9M-433" id="H0Z-lF-OUz"/>
+                <outlet property="timerButton" destination="1SV-nP-w88" id="6Of-3f-DvJ"/>
                 <outletCollection property="actionButtonsCollection" destination="JuT-3h-LUZ" collectionClass="NSMutableArray" id="B8i-Th-BYm"/>
                 <outletCollection property="actionButtonsCollection" destination="1SV-nP-w88" collectionClass="NSMutableArray" id="fup-C1-jjv"/>
                 <outletCollection property="actionButtonsCollection" destination="icv-9t-mWy" collectionClass="NSMutableArray" id="BDr-2I-hXZ"/>

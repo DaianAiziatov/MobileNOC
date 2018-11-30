@@ -17,6 +17,10 @@ class MachineTableViewCell: UITableViewCell {
     @IBOutlet private weak var insideStatusView: UIView!
     @IBOutlet private weak var statusView: UIView!
     @IBOutlet private var actionButtonsCollection: [UIButton]!
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var timerButton: UIButton!
+    @IBOutlet weak var muteButton: UIButton!
     @IBOutlet private weak var serverImageView: UIImageView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
@@ -31,6 +35,10 @@ class MachineTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         configure(with: .none)
+    }
+    
+    @IBAction func actionButtonTapped(_ sender: UIButton) {
+        sender.isSelected = sender.isSelected ? false : true
     }
     
     func configure(with machine: Machine?) {
@@ -71,6 +79,10 @@ class MachineTableViewCell: UITableViewCell {
             actionButtonsCollection[$0.offset].makeCircleBorders()
             actionButtonsCollection[$0.offset].backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         })
+        checkButton.setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.3677034378, green: 0.2670847476, blue: 0.8244769573, alpha: 1)), for: .selected)
+        callButton.setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.870660603, green: 0.3357949555, blue: 0.7472556233, alpha: 1)), for: .selected)
+        timerButton.setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.1742792428, green: 0.7241380215, blue: 0.8583763838, alpha: 1)), for: .selected)
+        muteButton.setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.8349406719, green: 0.4129276872, blue: 0.4073970616, alpha: 1)), for: .selected)
     }
     
 }

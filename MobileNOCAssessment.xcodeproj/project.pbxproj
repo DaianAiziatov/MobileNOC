@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B6D01F121ADA1790006C898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D01F021ADA1790006C898 /* AppDelegate.swift */; };
-		2B6D01F321ADA1790006C898 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D01F221ADA1790006C898 /* LoginViewController.swift */; };
 		2B6D01F621ADA1790006C898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F421ADA1790006C898 /* Main.storyboard */; };
 		2B6D01F821ADA17D0006C898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F721ADA17D0006C898 /* Assets.xcassets */; };
 		2B6D01FB21ADA17D0006C898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6D01F921ADA17D0006C898 /* LaunchScreen.storyboard */; };
@@ -22,6 +21,7 @@
 		2B6D021521ADEC4A0006C898 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D021421ADEC4A0006C898 /* HTTPURLResponse.swift */; };
 		2B8DDC5721AF1AFD00171267 /* MachineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5621AF1AFD00171267 /* MachineListViewController.swift */; };
 		2B8DDC5921AF22D100171267 /* AlertDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5821AF22D100171267 /* AlertDisplayable.swift */; };
+		2BDDF79A21B1C1D500172DDA /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDDF79921B1C1D500172DDA /* UIImage.swift */; };
 		2BFA21BF21B04BBA00B7C56B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21BE21B04BBA00B7C56B /* UIView.swift */; };
 		2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */; };
 		2BFA21C321B04FA900B7C56B /* MachineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */; };
@@ -32,7 +32,6 @@
 /* Begin PBXFileReference section */
 		2B6D01ED21ADA1790006C898 /* MobileNOCAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNOCAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6D01F021ADA1790006C898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B6D01F221ADA1790006C898 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2B6D01F521ADA1790006C898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B6D01F721ADA17D0006C898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B6D01FA21ADA17D0006C898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		2B6D021421ADEC4A0006C898 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
 		2B8DDC5621AF1AFD00171267 /* MachineListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineListViewController.swift; sourceTree = "<group>"; };
 		2B8DDC5821AF22D100171267 /* AlertDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayable.swift; sourceTree = "<group>"; };
+		2BDDF79921B1C1D500172DDA /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		2BFA21BE21B04BBA00B7C56B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineTableViewCell.swift; sourceTree = "<group>"; };
 		2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachineTableViewCell.xib; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				2B8DDC5621AF1AFD00171267 /* MachineListViewController.swift */,
-				2B6D01F221ADA1790006C898 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				2BFA21BE21B04BBA00B7C56B /* UIView.swift */,
+				2BDDF79921B1C1D500172DDA /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,10 +249,10 @@
 				2B8DDC5921AF22D100171267 /* AlertDisplayable.swift in Sources */,
 				2B6D021321ADEBD30006C898 /* Result.swift in Sources */,
 				2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */,
-				2B6D01F321ADA1790006C898 /* LoginViewController.swift in Sources */,
 				2B6D021521ADEC4A0006C898 /* HTTPURLResponse.swift in Sources */,
 				2B6D020F21ADE7B60006C898 /* URLRequest.swift in Sources */,
 				2B6D01F121ADA1790006C898 /* AppDelegate.swift in Sources */,
+				2BDDF79A21B1C1D500172DDA /* UIImage.swift in Sources */,
 				2B6D020821ADC2BD0006C898 /* MachinePage.swift in Sources */,
 				2B6D020B21ADE5BA0006C898 /* APIClient.swift in Sources */,
 				2B6D021121ADEB6C0006C898 /* DataResponseError.swift in Sources */,
