@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-protocol AlertDisplayer {
+protocol AlertDisplayable {
     func displayAlert(with title: String, message: String, actions: [UIAlertAction]?)
 }
 
-extension AlertDisplayer where Self: UIViewController {
+extension AlertDisplayable where Self: UIViewController {
     func displayAlert(with title: String, message: String, actions: [UIAlertAction]? = nil) {
         guard presentedViewController == nil else {
             return

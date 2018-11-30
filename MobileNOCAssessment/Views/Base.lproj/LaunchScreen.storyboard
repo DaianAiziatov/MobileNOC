@@ -17,7 +17,16 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_for_launch_screen" translatesAutoresizingMaskIntoConstraints="NO" id="FSv-AT-wye">
+                                <rect key="frame" x="218.5" y="89.5" width="675" height="675"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FSv-AT-wye" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QMX-Ed-oTB"/>
+                            <constraint firstItem="FSv-AT-wye" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Yzq-uz-Ond"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -26,4 +35,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_for_launch_screen" width="675" height="675"/>
+    </resources>
 </document>

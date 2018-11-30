@@ -8,34 +8,15 @@
 
 import UIKit
 
-class MachineListViewController: UIViewController, AlertDisplayer {
+class MachineListViewController: UIViewController, AlertDisplayable {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    
-    // MARK: Left bar outlets
-    @IBOutlet weak var avatarButton: UIButton! {
-        didSet {
-            avatarButton.makeCircleBorders()
-        }
-    }
-    
-    // MARK: Top bar outlets
-    @IBOutlet var fileterButtonsCollection: [UIButton]! {
-        didSet {
-            fileterButtonsCollection.enumerated().forEach({
-                fileterButtonsCollection[$0.offset].makeCircleBorders()
-                fileterButtonsCollection[$0.offset].makeBordersWith(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), width: 1.0)
-            })
-        }
-    }
-    
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var avatarButton: UIButton!
+    @IBOutlet private var fileterButtonsCollection: [UIButton]!
+    @IBOutlet private weak var countLabel: UILabel!
 
-    
-    
-    
     private var machines = [Machine]()
     private var filteredMachines = [Machine]()
     private var currentPage = 0
@@ -46,56 +27,41 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     }
     private var isFetchInProgress = false
     
-    let client = APIClient()
-    let request = APIRequest(username: "admin@boot.com", password: "admin")
+    private let client = APIClient()
+    private let request = APIRequest(username: "admin@boot.com", password: "admin")
+    var totalCount: Int {
+        return total
+    }
+    var currentCount: Int {
+        return machines.count
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    var totalCount: Int {
-        return total
-    }
-    
-    var currentCount: Int {
-        return machines.count
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         indicatorView.startAnimating()
-        
-        tableView.isHidden = true
-        tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
-        tableView.dataSource = self
-        tableView.prefetchDataSource = self
-        
-        searchBar.delegate = self
-        searchBar.placeholder = "Search"
-        searchBar.isUserInteractionEnabled = true
-        
+        setupSearchBar()
+        setupTableView()
+        setupFilterButtons()
+        avatarButton.makeCircleBorders()
         fetchMachines()
     }
     
-    func fetchMachines() {
-        // 1
+    private func fetchMachines() {
         guard !isFetchInProgress else {
             return
         }
-        
-        // 2
         isFetchInProgress = true
-        
         client.fetchMachines(with: request, page: currentPage) { result in
             switch result {
-            // 3
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.isFetchInProgress = false
                     self.onFetchFailed(with: error.reason)
                 }
-            // 4
             case .success(let response):
                 DispatchQueue.main.async {
                     print(response)
@@ -114,14 +80,31 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         }
     }
     
-    private func calculateIndexPathsToReload(from newMachines: [Machine]) -> [IndexPath] {
-        let startIndex = machines.count - newMachines.count
-        let endIndex = startIndex + newMachines.count
-        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    // MARK: Setup UI
+    private func setupFilterButtons() {
+        fileterButtonsCollection.enumerated().forEach({
+            fileterButtonsCollection[$0.offset].makeCircleBorders()
+            fileterButtonsCollection[$0.offset].makeBordersWith(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), width: 1.0)
+        })
     }
+    
+    private func setupTableView() {
+        tableView.isHidden = true
+        tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
+        tableView.dataSource = self
+        tableView.prefetchDataSource = self
+    }
+    
+    private func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "Search"
+        searchBar.isUserInteractionEnabled = true
+    }
+    
 
 }
 
+// MARK: TableView DataSource
 extension MachineListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchBar.text != "" {
@@ -132,26 +115,25 @@ extension MachineListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell") as! MachineTableViewCell
-        // 2
         if self.searchBar.text != "" {
             if isLoadingCell(for: indexPath) {
                 cell.configure(with: .none)
             } else {
-                
+                cell.configure(with: filteredMachines[indexPath.row])
             }
-            return cell
         } else {
             if isLoadingCell(for: indexPath) {
                 cell.configure(with: .none)
             } else {
                 cell.configure(with: machines[indexPath.row])
             }
-            return cell
         }
+        return cell
     }
     
 }
 
+// MARK: TableView Delegate
 extension MachineListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -164,44 +146,12 @@ extension MachineListViewController: UITableViewDelegate {
     }
 }
 
-
+// MARK: TableView DataSourcePrefetching(for pagination)
 extension MachineListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
             fetchMachines()
         }
-    }
-}
-
-private extension MachineListViewController {
-    func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        return indexPath.row >= self.currentCount
-    }
-    
-    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
-        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
-        return Array(indexPathsIntersection)
-    }
-    
-    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
-        // 1
-        guard let newIndexPathsToReload = newIndexPathsToReload else {
-            indicatorView.stopAnimating()
-            tableView.isHidden = false
-            tableView.reloadData()
-            return
-        }
-        // 2
-        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
-        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
-    }
-    
-    func onFetchFailed(with reason: String) {
-        indicatorView.stopAnimating()
-        let title = "Warning"
-        let action = UIAlertAction(title: "OK", style: .default)
-        displayAlert(with: title , message: reason, actions: [action])
     }
 }
 
@@ -217,9 +167,9 @@ extension MachineListViewController: UISearchBarDelegate {
             let ipAddress: NSString = (item.ipAddress ?? "unknown") as NSString
             let ipSubnetMask: NSString = (item.ipSubnetMask ?? "unknown") as NSString
             let fileredResult = (name.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
-                                (serialNumber.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
-                                (ipAddress.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
-                                (ipSubnetMask.range(of: searchString!, options: .caseInsensitive).location != NSNotFound)
+                (serialNumber.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
+                (ipAddress.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
+                (ipSubnetMask.range(of: searchString!, options: .caseInsensitive).location != NSNotFound)
             return fileredResult
         })
         tableView.reloadData()
@@ -231,5 +181,44 @@ extension MachineListViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     
+}
+
+
+
+// MARK: Helpers for pagination
+private extension MachineListViewController {
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= self.currentCount
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
+    
+    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+            indicatorView.stopAnimating()
+            tableView.isHidden = false
+            tableView.reloadData()
+            return
+        }
+        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }
+    
+    func onFetchFailed(with reason: String) {
+        indicatorView.stopAnimating()
+        let title = "Warning"
+        let action = UIAlertAction(title: "OK", style: .default)
+        displayAlert(with: title , message: reason, actions: [action])
+    }
+    
+    func calculateIndexPathsToReload(from newMachines: [Machine]) -> [IndexPath] {
+        let startIndex = machines.count - newMachines.count
+        let endIndex = startIndex + newMachines.count
+        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
 }
 

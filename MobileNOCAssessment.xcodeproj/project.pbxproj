@@ -21,7 +21,7 @@
 		2B6D021321ADEBD30006C898 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D021221ADEBD30006C898 /* Result.swift */; };
 		2B6D021521ADEC4A0006C898 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D021421ADEC4A0006C898 /* HTTPURLResponse.swift */; };
 		2B8DDC5721AF1AFD00171267 /* MachineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5621AF1AFD00171267 /* MachineListViewController.swift */; };
-		2B8DDC5921AF22D100171267 /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5821AF22D100171267 /* AlertDisplayer.swift */; };
+		2B8DDC5921AF22D100171267 /* AlertDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8DDC5821AF22D100171267 /* AlertDisplayable.swift */; };
 		2BFA21BF21B04BBA00B7C56B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21BE21B04BBA00B7C56B /* UIView.swift */; };
 		2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */; };
 		2BFA21C321B04FA900B7C56B /* MachineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */; };
@@ -46,7 +46,7 @@
 		2B6D021221ADEBD30006C898 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		2B6D021421ADEC4A0006C898 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
 		2B8DDC5621AF1AFD00171267 /* MachineListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineListViewController.swift; sourceTree = "<group>"; };
-		2B8DDC5821AF22D100171267 /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
+		2B8DDC5821AF22D100171267 /* AlertDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayable.swift; sourceTree = "<group>"; };
 		2BFA21BE21B04BBA00B7C56B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2BFA21C021B04FA900B7C56B /* MachineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineTableViewCell.swift; sourceTree = "<group>"; };
 		2BFA21C121B04FA900B7C56B /* MachineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachineTableViewCell.xib; sourceTree = "<group>"; };
@@ -84,15 +84,14 @@
 		2B6D01EF21ADA1790006C898 /* MobileNOCAssessment */ = {
 			isa = PBXGroup;
 			children = (
-				2BFA21BD21B04B9F00B7C56B /* Extensions */,
+				2B6D01F021ADA1790006C898 /* AppDelegate.swift */,
+				2B6D020221ADABFD0006C898 /* Models */,
 				2BFA21B721AF8C9200B7C56B /* Views */,
 				2BFA21B621AF8C7300B7C56B /* Controllers */,
+				2BDDF79721B1B45300172DDA /* Protocols */,
+				2BFA21BD21B04B9F00B7C56B /* Extensions */,
 				2B6D020921ADE5A10006C898 /* Networking */,
-				2B6D020221ADABFD0006C898 /* Models */,
-				2B6D01F021ADA1790006C898 /* AppDelegate.swift */,
-				2B6D01F721ADA17D0006C898 /* Assets.xcassets */,
-				2B6D01FC21ADA17D0006C898 /* Info.plist */,
-				2B8DDC5821AF22D100171267 /* AlertDisplayer.swift */,
+				2BDDF79821B1B4BC00172DDA /* Resources */,
 			);
 			path = MobileNOCAssessment;
 			sourceTree = "<group>";
@@ -117,6 +116,23 @@
 				2B6D021421ADEC4A0006C898 /* HTTPURLResponse.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		2BDDF79721B1B45300172DDA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2B8DDC5821AF22D100171267 /* AlertDisplayable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2BDDF79821B1B4BC00172DDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B6D01F721ADA17D0006C898 /* Assets.xcassets */,
+				2B6D01FC21ADA17D0006C898 /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2BFA21B621AF8C7300B7C56B /* Controllers */ = {
@@ -230,7 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B8DDC5921AF22D100171267 /* AlertDisplayer.swift in Sources */,
+				2B8DDC5921AF22D100171267 /* AlertDisplayable.swift in Sources */,
 				2B6D021321ADEBD30006C898 /* Result.swift in Sources */,
 				2BFA21C221B04FA900B7C56B /* MachineTableViewCell.swift in Sources */,
 				2B6D01F321ADA1790006C898 /* LoginViewController.swift in Sources */,
