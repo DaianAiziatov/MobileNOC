@@ -126,6 +126,9 @@
                                     <constraint firstAttribute="width" constant="1" id="uiO-kd-KMA"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZHn-Zv-bih">
+                                <rect key="frame" x="493" y="30" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -136,10 +139,12 @@
                             <constraint firstItem="Cwy-WR-KGr" firstAttribute="top" secondItem="c0b-Xa-L9g" secondAttribute="top" id="AMM-56-Yu0"/>
                             <constraint firstItem="Y4t-zF-jS4" firstAttribute="leading" secondItem="J8k-CJ-ba1" secondAttribute="trailing" constant="20" id="NHf-CA-U2o"/>
                             <constraint firstItem="VJb-JI-Aku" firstAttribute="leading" secondItem="c0b-Xa-L9g" secondAttribute="leading" constant="15" id="Psm-lm-8Q7"/>
+                            <constraint firstItem="ZHn-Zv-bih" firstAttribute="centerY" secondItem="c0b-Xa-L9g" secondAttribute="centerY" id="SF9-xQ-xHm"/>
                             <constraint firstAttribute="bottom" secondItem="J8k-CJ-ba1" secondAttribute="bottom" id="aYA-iw-Drh"/>
                             <constraint firstItem="xrf-5B-66k" firstAttribute="centerY" secondItem="c0b-Xa-L9g" secondAttribute="centerY" id="cXy-Cl-kqy"/>
                             <constraint firstAttribute="bottom" secondItem="Y4t-zF-jS4" secondAttribute="bottom" constant="15" id="eEl-9k-SKz"/>
                             <constraint firstAttribute="height" priority="999" constant="80" id="evw-Po-4Tf"/>
+                            <constraint firstItem="ZHn-Zv-bih" firstAttribute="centerX" secondItem="c0b-Xa-L9g" secondAttribute="centerX" id="f5t-vr-k1o"/>
                             <constraint firstItem="J8k-CJ-ba1" firstAttribute="top" secondItem="c0b-Xa-L9g" secondAttribute="top" id="gUT-qd-chb"/>
                             <constraint firstItem="J8k-CJ-ba1" firstAttribute="width" secondItem="c0b-Xa-L9g" secondAttribute="width" multiplier="0.27" id="iWw-FX-c88"/>
                             <constraint firstItem="xrf-5B-66k" firstAttribute="leading" secondItem="Y4t-zF-jS4" secondAttribute="trailing" constant="50" id="jSJ-uc-nS1"/>
@@ -160,6 +165,7 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
                 <outlet property="containerView" destination="c0b-Xa-L9g" id="bcD-pY-QR6"/>
+                <outlet property="indicatorView" destination="ZHn-Zv-bih" id="cms-Pd-xzO"/>
                 <outlet property="insideStatusView" destination="K1O-TD-6ze" id="5kK-cK-jmK"/>
                 <outlet property="ipAddressLabel" destination="Rut-SF-0mS" id="OMN-bi-v1V"/>
                 <outlet property="ipSubnetMaskLabel" destination="jwy-fT-h1s" id="D8U-N5-siG"/>

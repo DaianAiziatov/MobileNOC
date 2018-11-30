@@ -52,20 +52,10 @@ class APIClient: NSObject {
 }
 
 extension APIClient: URLSessionDelegate {
-    
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         // Pass test server with self signed certificate
-        print("from session delegate")
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
             completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
         }
-        if challenge.protectionSpace.host == "45.55.43.15:9090" {
-            completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-        } else {
-            completionHandler(.performDefaultHandling, nil)
-        }
     }
-    
-    
-    
 }

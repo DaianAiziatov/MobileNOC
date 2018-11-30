@@ -12,6 +12,7 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     // MARK: Left bar outlets
     @IBOutlet weak var avatarButton: UIButton! {
@@ -63,8 +64,10 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        indicatorView.startAnimating()
+        
+        tableView.isHidden = true
         tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
-
         tableView.dataSource = self
         tableView.prefetchDataSource = self
         
@@ -90,8 +93,7 @@ class MachineListViewController: UIViewController, AlertDisplayer {
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.isFetchInProgress = false
-                    print(error)
-                    //self.delegate?.onFetchFailed(with: error.reason)
+                    self.onFetchFailed(with: error.reason)
                 }
             // 4
             case .success(let response):
@@ -133,30 +135,19 @@ extension MachineListViewController: UITableViewDataSource {
         // 2
         if self.searchBar.text != "" {
             if isLoadingCell(for: indexPath) {
-                
+                cell.configure(with: .none)
             } else {
-                cell.serverNameLabel?.text = filteredMachines[indexPath.row].name
-                cell.serialNumberLabel?.text = filteredMachines[indexPath.row].serialNumber ?? "unknown"
-                cell.ipAddressLabel?.text = filteredMachines[indexPath.row].ipAddress ?? "unknown"
-                cell.ipSubnetMaskLabel?.text = filteredMachines[indexPath.row].ipSubnetMask ?? "unknown"
-                cell.statusId = filteredMachines[indexPath.row].statusId
-                return cell
+                
             }
-            
+            return cell
         } else {
             if isLoadingCell(for: indexPath) {
-                
+                cell.configure(with: .none)
             } else {
-                cell.serverNameLabel?.text = machines[indexPath.row].name
-                cell.serialNumberLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
-                cell.ipAddressLabel?.text = machines[indexPath.row].ipAddress ?? "unknown"
-                cell.ipSubnetMaskLabel?.text = machines[indexPath.row].ipSubnetMask ?? "unknown"
-                cell.statusId = machines[indexPath.row].statusId
-                return cell
+                cell.configure(with: machines[indexPath.row])
             }
+            return cell
         }
-        return cell
-        
     }
     
 }
@@ -196,7 +187,7 @@ private extension MachineListViewController {
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
         // 1
         guard let newIndexPathsToReload = newIndexPathsToReload else {
-            //indicatorView.stopAnimating()
+            indicatorView.stopAnimating()
             tableView.isHidden = false
             tableView.reloadData()
             return
@@ -207,8 +198,7 @@ private extension MachineListViewController {
     }
     
     func onFetchFailed(with reason: String) {
-        //indicatorView.stopAnimating()
-        
+        indicatorView.stopAnimating()
         let title = "Warning"
         let action = UIAlertAction(title: "OK", style: .default)
         displayAlert(with: title , message: reason, actions: [action])
