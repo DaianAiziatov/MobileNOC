@@ -62,9 +62,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="R2a-GS-iZ7"/>
-            <connections>
-                <outlet property="contentView" destination="oXO-iB-e4T" id="b8D-Wm-JkS"/>
-            </connections>
             <point key="canvasLocation" x="0.5" y="58"/>
         </view>
     </objects>

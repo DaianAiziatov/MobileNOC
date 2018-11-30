@@ -9,13 +9,4 @@
 import UIKit
 
 class TableViewHeader: UIView {
-
-    @IBOutlet weak var contentView: UIView!
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)
-//        self.addSubview(self.contentView);    // adding the top level view to the view hierarchy
-//    }
-
 }

@@ -19,11 +19,6 @@ class MachineListViewController: UIViewController, AlertDisplayer {
             avatarButton.makeCircleBorders()
         }
     }
-    @IBOutlet weak var logoImageView: UIImageView! {
-        didSet {
-            logoImageView.makeRoundBorder(with: 20.0)
-        }
-    }
     
     // MARK: Top bar outlets
     @IBOutlet var fileterButtonsCollection: [UIButton]! {
@@ -35,11 +30,8 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         }
     }
     
-    @IBOutlet weak var countLabel: UILabel! {
-        didSet {
-            countLabel.makeRoundBorder(with: 20.0)
-        }
-    }
+    @IBOutlet weak var countLabel: UILabel!
+
     
     
     
@@ -67,11 +59,7 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     var currentCount: Int {
         return machines.count
     }
-    
-    func machine(at index: Int) -> Machine {
-        return machines[index]
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -151,7 +139,7 @@ extension MachineListViewController: UITableViewDataSource {
                 cell.serialNumberLabel?.text = filteredMachines[indexPath.row].serialNumber ?? "unknown"
                 cell.ipAddressLabel?.text = filteredMachines[indexPath.row].ipAddress ?? "unknown"
                 cell.ipSubnetMaskLabel?.text = filteredMachines[indexPath.row].ipSubnetMask ?? "unknown"
-                cell.status = filteredMachines[indexPath.row].statusId
+                cell.statusId = filteredMachines[indexPath.row].statusId
                 return cell
             }
             
@@ -163,7 +151,7 @@ extension MachineListViewController: UITableViewDataSource {
                 cell.serialNumberLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
                 cell.ipAddressLabel?.text = machines[indexPath.row].ipAddress ?? "unknown"
                 cell.ipSubnetMaskLabel?.text = machines[indexPath.row].ipSubnetMask ?? "unknown"
-                cell.status = machines[indexPath.row].statusId
+                cell.statusId = machines[indexPath.row].statusId
                 return cell
             }
         }

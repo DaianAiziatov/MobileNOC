@@ -150,12 +150,17 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMY-pl-94v">
                                                 <rect key="frame" x="0.0" y="0.0" width="238" height="66.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1X-VG-V0s">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1X-VG-V0s">
                                                         <rect key="frame" x="0.0" y="20" width="62" height="46.5"/>
                                                         <color key="backgroundColor" red="0.92941176469999998" green="0.43529411759999997" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-z1-rCq">
                                                         <rect key="frame" x="52" y="20" width="186" height="46.5"/>
@@ -225,8 +230,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OjM-Q7-1kv">
                                 <rect key="frame" x="78" y="68" width="1034" height="766"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" red="0.36862745099999999" green="0.47058823529999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jQM-zI-PHB" id="dNg-4u-XSf"/>
                                     <outlet property="delegate" destination="jQM-zI-PHB" id="46U-dz-s0c"/>
@@ -243,12 +247,17 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="avatar"/>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="flX-fg-YS9">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="flX-fg-YS9">
                                         <rect key="frame" x="10" y="28" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Dx1-xk-ODj"/>
                                             <constraint firstAttribute="width" constant="60" id="Vyj-XZ-DXs"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1630934476852417" green="0.20673948526382446" blue="0.26907742023468018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -280,7 +289,6 @@
                     <connections>
                         <outlet property="avatarButton" destination="1hg-tW-jfl" id="RNw-bo-T2c"/>
                         <outlet property="countLabel" destination="K1X-VG-V0s" id="5tP-9r-k28"/>
-                        <outlet property="logoImageView" destination="flX-fg-YS9" id="WyU-ha-Jhw"/>
                         <outlet property="searchBar" destination="oe0-3R-8Vy" id="Y8s-UZ-Uiy"/>
                         <outlet property="tableView" destination="OjM-Q7-1kv" id="9I1-J9-KD6"/>
                         <outletCollection property="fileterButtonsCollection" destination="0an-pM-DeS" collectionClass="NSMutableArray" id="gf9-Ee-kVg"/>
