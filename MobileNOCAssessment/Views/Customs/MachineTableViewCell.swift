@@ -17,10 +17,10 @@ class MachineTableViewCell: UITableViewCell {
     @IBOutlet private weak var insideStatusView: UIView!
     @IBOutlet private weak var statusView: UIView!
     @IBOutlet private var actionButtonsCollection: [UIButton]!
-    @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var callButton: UIButton!
-    @IBOutlet weak var timerButton: UIButton!
-    @IBOutlet weak var muteButton: UIButton!
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet private weak var callButton: UIButton!
+    @IBOutlet private weak var timerButton: UIButton!
+    @IBOutlet private weak var muteButton: UIButton!
     @IBOutlet private weak var serverImageView: UIImageView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
@@ -54,6 +54,10 @@ class MachineTableViewCell: UITableViewCell {
             containerView.isHidden = true
             indicatorView.startAnimating()
         }
+    }
+    
+    func set(selected: Bool) {
+        containerView.backgroundColor = selected ? #colorLiteral(red: 0.8920308948, green: 0.9604279399, blue: 0.998091042, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     // MARK: Set Status Indicator
