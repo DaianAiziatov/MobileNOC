@@ -149,14 +149,6 @@ extension MachineListViewController: UITableViewDataSource {
 // MARK: TableView Delegate
 extension MachineListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for cell in tableView.visibleCells as! [MachineTableViewCell] {
-            cell.set(selected: false)
-        }
-        let currentCell = tableView.cellForRow(at: indexPath) as! MachineTableViewCell
-        currentCell.set(selected: true)
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header: TableViewHeader = .fromNib()
         return header

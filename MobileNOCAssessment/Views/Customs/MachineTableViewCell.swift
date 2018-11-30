@@ -37,6 +37,11 @@ class MachineTableViewCell: UITableViewCell {
         configure(with: .none)
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        setBackgroundColorFor(selected)
+    }
+    
     @IBAction func actionButtonTapped(_ sender: UIButton) {
         sender.isSelected = sender.isSelected ? false : true
     }
@@ -56,8 +61,8 @@ class MachineTableViewCell: UITableViewCell {
         }
     }
     
-    func set(selected: Bool) {
-        containerView.backgroundColor = selected ? #colorLiteral(red: 0.8920308948, green: 0.9604279399, blue: 0.998091042, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    private func setBackgroundColorFor(_ isSelected: Bool) {
+        containerView.backgroundColor = isSelected ? #colorLiteral(red: 0.8920308948, green: 0.9604279399, blue: 0.998091042, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     // MARK: Set Status Indicator
