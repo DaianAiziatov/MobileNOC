@@ -225,8 +225,8 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OjM-Q7-1kv">
                                 <rect key="frame" x="78" y="68" width="1034" height="766"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="0.36862745099999999" green="0.47058823529999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jQM-zI-PHB" id="dNg-4u-XSf"/>
                                     <outlet property="delegate" destination="jQM-zI-PHB" id="46U-dz-s0c"/>
@@ -281,6 +281,7 @@
                         <outlet property="avatarButton" destination="1hg-tW-jfl" id="RNw-bo-T2c"/>
                         <outlet property="countLabel" destination="K1X-VG-V0s" id="5tP-9r-k28"/>
                         <outlet property="logoImageView" destination="flX-fg-YS9" id="WyU-ha-Jhw"/>
+                        <outlet property="searchBar" destination="oe0-3R-8Vy" id="Y8s-UZ-Uiy"/>
                         <outlet property="tableView" destination="OjM-Q7-1kv" id="9I1-J9-KD6"/>
                         <outletCollection property="fileterButtonsCollection" destination="0an-pM-DeS" collectionClass="NSMutableArray" id="gf9-Ee-kVg"/>
                         <outletCollection property="fileterButtonsCollection" destination="T28-AH-jA5" collectionClass="NSMutableArray" id="P4J-ew-iXV"/>

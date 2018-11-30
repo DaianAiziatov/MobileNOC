@@ -11,6 +11,7 @@ import UIKit
 class MachineListViewController: UIViewController, AlertDisplayer {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Left bar outlets
     @IBOutlet weak var avatarButton: UIButton! {
@@ -42,7 +43,8 @@ class MachineListViewController: UIViewController, AlertDisplayer {
     
     
     
-    private var machines: [Machine] = []
+    private var machines = [Machine]()
+    private var filteredMachines = [Machine]()
     private var currentPage = 0
     private var total = 0 {
         didSet {
@@ -74,10 +76,13 @@ class MachineListViewController: UIViewController, AlertDisplayer {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "MachineTableViewCell", bundle: nil), forCellReuseIdentifier: "MachineCell")
-        //tableView.register(UINib(nibName: "TableViewHeader", bundle: nil), forCellReuseIdentifier: "TableViewHeader")
 
         tableView.dataSource = self
         tableView.prefetchDataSource = self
+        
+        searchBar.delegate = self
+        searchBar.placeholder = "Search"
+        searchBar.isUserInteractionEnabled = true
         
         fetchMachines()
     }
@@ -129,23 +134,41 @@ class MachineListViewController: UIViewController, AlertDisplayer {
 
 extension MachineListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 1
+        if self.searchBar.text != "" {
+            return filteredMachines.count
+        }
         return self.totalCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell") as! MachineTableViewCell
         // 2
-        if isLoadingCell(for: indexPath) {
+        if self.searchBar.text != "" {
+            if isLoadingCell(for: indexPath) {
+                
+            } else {
+                cell.serverNameLabel?.text = filteredMachines[indexPath.row].name
+                cell.serialNumberLabel?.text = filteredMachines[indexPath.row].serialNumber ?? "unknown"
+                cell.ipAddressLabel?.text = filteredMachines[indexPath.row].ipAddress ?? "unknown"
+                cell.ipSubnetMaskLabel?.text = filteredMachines[indexPath.row].ipSubnetMask ?? "unknown"
+                cell.status = filteredMachines[indexPath.row].statusId
+                return cell
+            }
             
         } else {
-            cell.serverNameLabel?.text = machines[indexPath.row].name
-            cell.serialNumberLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
-            cell.ipAddressLabel?.text = machines[indexPath.row].ipAddress ?? "unknown"
-            cell.ipSubnetMaskLabel?.text = machines[indexPath.row].ipSubnetMask ?? "unknown"
-            cell.status = machines[indexPath.row].statusId
+            if isLoadingCell(for: indexPath) {
+                
+            } else {
+                cell.serverNameLabel?.text = machines[indexPath.row].name
+                cell.serialNumberLabel?.text = machines[indexPath.row].serialNumber ?? "unknown"
+                cell.ipAddressLabel?.text = machines[indexPath.row].ipAddress ?? "unknown"
+                cell.ipSubnetMaskLabel?.text = machines[indexPath.row].ipSubnetMask ?? "unknown"
+                cell.status = machines[indexPath.row].statusId
+                return cell
+            }
         }
         return cell
+        
     }
     
 }
@@ -204,5 +227,31 @@ private extension MachineListViewController {
     }
 }
 
-
+// MARK: - Searchbar delegate
+extension MachineListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
+        let searchString = self.searchBar.text
+        filteredMachines = machines.filter({ (item) -> Bool in
+            let name: NSString = item.name as NSString
+            let serialNumber: NSString = (item.serialNumber ?? "unknown") as NSString
+            let ipAddress: NSString = (item.ipAddress ?? "unknown") as NSString
+            let ipSubnetMask: NSString = (item.ipSubnetMask ?? "unknown") as NSString
+            let fileredResult = (name.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
+                                (serialNumber.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
+                                (ipAddress.range(of: searchString!, options: .caseInsensitive).location != NSNotFound) ||
+                                (ipSubnetMask.range(of: searchString!, options: .caseInsensitive).location != NSNotFound)
+            return fileredResult
+        })
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        searchBar.showsCancelButton = false
+        tableView.reloadData()
+    }
+    
+}
 
