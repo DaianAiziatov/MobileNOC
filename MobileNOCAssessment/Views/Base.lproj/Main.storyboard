@@ -52,21 +52,21 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6K-CT-Ozi" userLabel="Filter View">
-                                        <rect key="frame" x="299" y="0.0" width="462" height="66.5"/>
+                                        <rect key="frame" x="299" y="0.0" width="441" height="66.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2p-RS-cjG">
-                                                <rect key="frame" x="0.0" y="0.0" width="462" height="66.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="441" height="66.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYl-G9-kfV">
-                                                        <rect key="frame" x="20" y="20" width="82" height="46.5"/>
+                                                        <rect key="frame" x="20" y="20" width="61" height="46.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HBy-dj-6l9">
-                                                        <rect key="frame" x="122" y="23.5" width="340" height="40"/>
+                                                        <rect key="frame" x="101" y="23.5" width="340" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0an-pM-DeS">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0an-pM-DeS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -79,7 +79,7 @@
                                                                     <action selector="filterButtonTapped:" destination="jQM-zI-PHB" eventType="touchUpInside" id="smS-PE-Kvc"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T28-AH-jA5">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T28-AH-jA5">
                                                                 <rect key="frame" x="70" y="0.0" width="70" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -92,7 +92,7 @@
                                                                     <action selector="filterButtonTapped:" destination="jQM-zI-PHB" eventType="touchUpInside" id="PnH-8k-Xrb"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-kC-zRI">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-kC-zRI">
                                                                 <rect key="frame" x="150" y="0.0" width="70" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -105,7 +105,7 @@
                                                                     <action selector="filterButtonTapped:" destination="jQM-zI-PHB" eventType="touchUpInside" id="Gar-xR-MFh"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYW-cw-sVu">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYW-cw-sVu">
                                                                 <rect key="frame" x="230" y="0.0" width="110" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -217,7 +217,7 @@
                                     <constraint firstAttribute="bottom" secondItem="N6K-CT-Ozi" secondAttribute="bottom" id="AQy-Ue-ptB"/>
                                     <constraint firstItem="OKB-Tk-qaw" firstAttribute="top" secondItem="UvH-BQ-uy0" secondAttribute="top" id="CTr-iQ-v1Q"/>
                                     <constraint firstItem="N6K-CT-Ozi" firstAttribute="top" secondItem="UvH-BQ-uy0" secondAttribute="top" id="EZt-E7-7by"/>
-                                    <constraint firstItem="EcX-tF-aYc" firstAttribute="leading" secondItem="N6K-CT-Ozi" secondAttribute="trailing" constant="35" id="Fm1-4Z-gKN"/>
+                                    <constraint firstItem="EcX-tF-aYc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N6K-CT-Ozi" secondAttribute="trailing" constant="35" id="Fm1-4Z-gKN"/>
                                     <constraint firstAttribute="bottom" secondItem="CQT-Qg-Ti7" secondAttribute="bottom" id="Ib8-ci-MSI"/>
                                     <constraint firstItem="N6K-CT-Ozi" firstAttribute="leading" secondItem="OKB-Tk-qaw" secondAttribute="trailing" constant="20" id="U4R-KY-5rr"/>
                                     <constraint firstItem="CQT-Qg-Ti7" firstAttribute="width" secondItem="UvH-BQ-uy0" secondAttribute="width" multiplier="0.24" id="VLE-Yq-xhg"/>
