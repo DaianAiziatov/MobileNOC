@@ -24,6 +24,15 @@ class MachineTableViewCell: UITableViewCell {
     @IBOutlet private weak var serverImageView: UIImageView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
+    private var machine: Machine!
+    private var machineActions: [MachineAction] = [] {
+        didSet {
+            actionButtonsCollection.enumerated().forEach({
+                let item = machineActions[$0.offset]
+                $0.element.isSelected = item.isSelected
+            })
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,21 +48,26 @@ class MachineTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        setBackgroundColorFor(selected)
+        setBackgroundColorFor(isSelected: selected)
     }
     
     @IBAction func actionButtonTapped(_ sender: UIButton) {
+        guard let index = actionButtonsCollection.index(of: sender) else { return }
         sender.isSelected = sender.isSelected ? false : true
+        machine.actions[index].isSelected = sender.isSelected ? true : false
+        print("\(machine.actions[index].type) for \(machine.name) - \(machine.actions[index].isSelected!)")
     }
     
     func configure(with machine: Machine?) {
         if let machine = machine {
+            self.machine = machine
             containerView.isHidden = false
             serverNameLabel?.text = machine.name
             serialNumberLabel?.text = machine.serialNumber ?? "unknown"
             ipAddressLabel?.text = machine.ipAddress ?? "unknown"
             ipSubnetMaskLabel?.text = machine.ipSubnetMask ?? "unknown"
             setStatusIndiacator(with: machine.statusId)
+            machineActions = machine.actions
             indicatorView.stopAnimating()
         } else {
             containerView.isHidden = true
@@ -61,7 +75,7 @@ class MachineTableViewCell: UITableViewCell {
         }
     }
     
-    private func setBackgroundColorFor(_ isSelected: Bool) {
+    private func setBackgroundColorFor(isSelected: Bool) {
         containerView.backgroundColor = isSelected ? #colorLiteral(red: 0.8920308948, green: 0.9604279399, blue: 0.998091042, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     

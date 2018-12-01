@@ -14,7 +14,7 @@ class MachineListViewController: UIViewController, AlertDisplayable {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet private weak var avatarButton: UIButton!
-    @IBOutlet private var fileterButtonsCollection: [UIButton]!
+    @IBOutlet private var filterButtonsCollection: [UIButton]!
     @IBOutlet private weak var countLabel: UILabel!
 
     private var machines = [Machine]()
@@ -51,9 +51,9 @@ class MachineListViewController: UIViewController, AlertDisplayable {
     }
     
     @IBAction func filterButtonTapped(_ sender: UIButton) {
-        guard let index = fileterButtonsCollection.index(of: sender) else { return }
-        fileterButtonsCollection.forEach({ $0.isSelected = false })
-        let item = fileterButtonsCollection[index]
+        guard let index = filterButtonsCollection.index(of: sender) else { return }
+        filterButtonsCollection.forEach({ $0.isSelected = false })
+        let item = filterButtonsCollection[index]
         item.isSelected = true
         print("\(item.titleLabel!.text ?? "") tapped")
     }
@@ -91,13 +91,13 @@ class MachineListViewController: UIViewController, AlertDisplayable {
     
     // MARK: Setup UI
     private func setupFilterButtons() {
-        fileterButtonsCollection.enumerated().forEach({
-            fileterButtonsCollection[$0.offset].makeCircleBorders()
-            fileterButtonsCollection[$0.offset].makeBordersWith(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), width: 1.0)
-            fileterButtonsCollection[$0.offset].setBackgroundImage(UIImage.from(color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), for: .normal)
-            fileterButtonsCollection[$0.offset].setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            fileterButtonsCollection[$0.offset].setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.02028449997, green: 0.6400577426, blue: 0.9848441482, alpha: 1)), for: .selected)
-            fileterButtonsCollection[$0.offset].setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .selected)
+        filterButtonsCollection.enumerated().forEach({
+            filterButtonsCollection[$0.offset].makeCircleBorders()
+            filterButtonsCollection[$0.offset].makeBordersWith(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), width: 1.0)
+            filterButtonsCollection[$0.offset].setBackgroundImage(UIImage.from(color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), for: .normal)
+            filterButtonsCollection[$0.offset].setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+            filterButtonsCollection[$0.offset].setBackgroundImage(UIImage.from(color: #colorLiteral(red: 0.02028449997, green: 0.6400577426, blue: 0.9848441482, alpha: 1)), for: .selected)
+            filterButtonsCollection[$0.offset].setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .selected)
         })
     }
     

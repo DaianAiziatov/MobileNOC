@@ -72,7 +72,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="HaL-QQ-eUY"/>
                                                                 </constraints>
-                                                                <state key="normal" title="All  ">
+                                                                <state key="normal" title="All">
                                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -295,10 +295,10 @@
                         <outlet property="indicatorView" destination="KIy-J6-JFw" id="ayo-BZ-RTh"/>
                         <outlet property="searchBar" destination="oe0-3R-8Vy" id="Y8s-UZ-Uiy"/>
                         <outlet property="tableView" destination="OjM-Q7-1kv" id="9I1-J9-KD6"/>
-                        <outletCollection property="fileterButtonsCollection" destination="0an-pM-DeS" collectionClass="NSMutableArray" id="gf9-Ee-kVg"/>
-                        <outletCollection property="fileterButtonsCollection" destination="T28-AH-jA5" collectionClass="NSMutableArray" id="P4J-ew-iXV"/>
-                        <outletCollection property="fileterButtonsCollection" destination="Mze-kC-zRI" collectionClass="NSMutableArray" id="cal-78-Hjt"/>
-                        <outletCollection property="fileterButtonsCollection" destination="TYW-cw-sVu" collectionClass="NSMutableArray" id="Wnb-Vy-VcT"/>
+                        <outletCollection property="filterButtonsCollection" destination="0an-pM-DeS" collectionClass="NSMutableArray" id="gf9-Ee-kVg"/>
+                        <outletCollection property="filterButtonsCollection" destination="T28-AH-jA5" collectionClass="NSMutableArray" id="P4J-ew-iXV"/>
+                        <outletCollection property="filterButtonsCollection" destination="Mze-kC-zRI" collectionClass="NSMutableArray" id="cal-78-Hjt"/>
+                        <outletCollection property="filterButtonsCollection" destination="TYW-cw-sVu" collectionClass="NSMutableArray" id="Wnb-Vy-VcT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqX-mi-6wL" sceneMemberID="firstResponder"/>

@@ -15,6 +15,7 @@ struct Machine {
     private(set) var ipAddress: String?
     private(set) var ipSubnetMask: String?
     private(set) var statusId: Int
+    private(set) var actions: [MachineAction]
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -41,6 +42,7 @@ extension Machine: Decodable {
         
         let status = try values.nestedContainer(keyedBy: StatusKeys.self, forKey: .status)
         statusId = try status.decode(Int.self, forKey: .statusId)
+        actions = [MachineAction(type: .mute), MachineAction(type: .timer), MachineAction(type: .call), MachineAction(type: .check)]
     }
     
 }
