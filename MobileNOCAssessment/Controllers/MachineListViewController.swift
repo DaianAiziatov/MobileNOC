@@ -29,10 +29,10 @@ class MachineListViewController: UIViewController, AlertDisplayable {
     
     private let client = APIClient()
     private let request = APIRequest(username: "admin@boot.com", password: "admin")
-    var totalCount: Int {
+    private var totalCount: Int {
         return total
     }
-    var currentCount: Int {
+    private var currentCount: Int {
         return machines.count
     }
     
@@ -119,6 +119,7 @@ class MachineListViewController: UIViewController, AlertDisplayable {
 
 // MARK: TableView DataSource
 extension MachineListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchBar.text != "" {
             return filteredMachines.count
@@ -143,7 +144,6 @@ extension MachineListViewController: UITableViewDataSource {
         }
         return cell
     }
-    
 }
 
 // MARK: TableView Delegate
@@ -193,7 +193,6 @@ extension MachineListViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         tableView.reloadData()
     }
-    
 }
 
 

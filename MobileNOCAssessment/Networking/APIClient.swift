@@ -17,7 +17,6 @@ class APIClient: NSObject {
     
     init(session: URLSession = URLSession.shared) {
         self.session = session
-        
     }
     
     func fetchMachines(with request: APIRequest, page: Int, completion: @escaping (Result<MachinePage, DataResponseError>) -> Void) {
