@@ -9,19 +9,17 @@
 import Foundation
 
 class APIClient: NSObject {
+    
     private lazy var baseURL: URL = {
         return URL(string: "https://45.55.43.15:9090/")!
     }()
     
-    let session: URLSession
-    
-    init(session: URLSession = URLSession.shared) {
-        self.session = session
-    }
+    private(set) lazy var session: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
+    }()
     
     func fetchMachines(with request: APIRequest, page: Int, completion: @escaping (Result<MachinePage, DataResponseError>) -> Void) {
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration, delegate: self, delegateQueue:OperationQueue.main)
         let urlRequest = URLRequest(url: baseURL.appendingPathComponent(request.path))
         let parameters = ["page": "\(page)"]
         var encodedURLRequest = urlRequest.encode(with: parameters)

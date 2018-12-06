@@ -78,7 +78,7 @@ class MachineListViewController: UIViewController, AlertDisplayable {
                     self.isFetchInProgress = false
                     self.total = response.totalElements
                     self.machines.append(contentsOf: response.machines)
-                    if response.page > 1 {
+                    if response.page > 0 {
                         let indexPathsToReload = self.calculateIndexPathsToReload(from: response.machines)
                         self.onFetchCompleted(with: indexPathsToReload)
                     } else {
@@ -129,15 +129,11 @@ extension MachineListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell") as! MachineTableViewCell
-        if self.searchBar.text != "" {
-            if isLoadingCell(for: indexPath) {
-                cell.configure(with: .none)
-            } else {
-                cell.configure(with: filteredMachines[indexPath.row])
-            }
+        if isLoadingCell(for: indexPath) {
+            cell.configure(with: .none)
         } else {
-            if isLoadingCell(for: indexPath) {
-                cell.configure(with: .none)
+            if self.searchBar.text != "" {
+                cell.configure(with: filteredMachines[indexPath.row])
             } else {
                 cell.configure(with: machines[indexPath.row])
             }
